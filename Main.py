@@ -6,7 +6,6 @@ from tkinter import ttk
 from PIL import ImageTk, Image
 
 def WelcomeWindow():
-
     def ReadAPI():
         global api_key
         api_key = wentry.get()
@@ -32,7 +31,6 @@ def WelcomeWindow():
 
 
 def MainWindow():
-
     def Search():
         summoner = srchsument.get()
         server = srchsrvr.get()
@@ -64,18 +62,17 @@ def MainWindow():
 
 
 def GetSummonerData(summoner, server):
-    resp = requests.get(f'https://{Resources.servers[server]}/lol/summoner/v4/summoners/by-name/{summoner}?api_key={api_key}')
-    summonerk = json.loads(resp.content)
-    print(resp.content)
-    summ_id = summonerk['id']
-    encr_id = summonerk['accountId']
-    puuid = summonerk['puuid']
-    mastery = requests.get(f'https://{Resources.servers[server]}/lol/champion-mastery/v4/champion-masteries/by-summoner/{summ_id}?api_key={api_key}')
-    with open('./masterylist.json', 'w') as writef:
-        json.dump(json.loads(mastery.content), writef)
+    sumbynameresp = requests.get(f'https://{Resources.servers[server]}/lol/summoner/v4/summoners/by-name/{summoner}?api_key={api_key}')
+    summonerdata = json.loads(sumbynameresp.content)
+    summ_id = summonerdata['id']
+    encr_id = summonerdata['accountId']
+    puuid = summonerdata['puuid']
+    masteryresp = requests.get(f'https://{Resources.servers[server]}/lol/champion-mastery/v4/champion-masteries/by-summoner/{summ_id}?api_key={api_key}')
+    mastery = json.loads(masteryresp.content)
+    for champion in mastery:
+        print(champion['championId'])
     with open(r'.\Dragontail\10.24.1\data\en_US\championFull.json', 'r') as readf:
         data = json.load(readf)
-    print(data['keys'])
 
 WelcomeWindow()
 MainWindow()
