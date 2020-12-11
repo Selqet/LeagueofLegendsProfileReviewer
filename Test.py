@@ -1,16 +1,33 @@
 import tkinter as tk
 from PIL import ImageTk, Image
 
-welcomewin = tk.Tk()
-welcomewin.geometry('500x150')
+def WelcomeWindow():
+    def ReadAPI():
+        global apikey
+        apikey = wentry.get()
+        welcomewin.destroy()
 
-wlabel = tk.Label(welcomewin, text = "Enter API")
-wlabel.place(y = 5)
+    welcomewin = tk.Tk()
+    welcomewin.geometry('400x120')
 
-wentry = tk.Entry(welcomewin, width = 43)
-wentry.place(anchor = tk.SE)
+    wframe = tk.Frame(welcomewin, width = 400, height = 120)
+    wframe.pack()
 
-welcomewin.mainloop()
+    wlabel = tk.Label(wframe, text = "Enter API key")
+    wlabel.place(x = 200, y = 10, anchor = tk.N)
+
+    wentry = tk.Entry(wframe, name = 'wentry', show = '*', width = 43)
+    wentry.place(x = 200, y = 40, anchor = tk.N)
+
+    wbutton = tk.Button(wframe, text = "Confirm", command = ReadAPI)
+    wbutton.place(x=200, y=70, anchor = tk.N)
+
+    welcomewin.mainloop()
+
+WelcomeWindow()
+print(apikey)
+
+
 r'''
 root = tk.Tk()
 

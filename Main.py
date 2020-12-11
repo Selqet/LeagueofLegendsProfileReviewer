@@ -1,8 +1,13 @@
 import requests
 import json
 import Resources
+import GUI
 
-api_key = input('Enter api\n')
+GUI.WelcomeWindow()
+api_key = GUI.apikey
+
+GUI.MainWindow()
+
 server = input('Enter server\n')
 summoner_name = input('Enter summoner name\n')
 resp = requests.get(f'https://{Resources.servers[server]}/lol/summoner/v4/summoners/by-name/{summoner_name}?api_key={api_key}')
