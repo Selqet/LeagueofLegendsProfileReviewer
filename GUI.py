@@ -10,23 +10,24 @@ def WelcomeWindow():
 
     welcomewin = tk.Tk()
     welcomewin.geometry('400x120')
+    welcomewin.title('Welcome, Summoner')
 
     wframe = tk.Frame(welcomewin, width = 400, height = 120)
     wframe.pack()
 
-    wlabel = tk.Label(wframe, text = "Enter API key")
+    wlabel = tk.Label(wframe, text = 'Enter your API key')
     wlabel.place(x = 200, y = 10, anchor = tk.N)
 
     wentry = tk.Entry(wframe, show = '*', width = 43)
     wentry.place(x = 200, y = 40, anchor = tk.N)
 
-    wbutton = tk.Button(wframe, text = "Confirm", command = ReadAPI)
+    wbutton = tk.Button(wframe, text = 'Confirm', command = ReadAPI)
     wbutton.place(x=200, y=70, anchor = tk.N)
 
     welcomewin.mainloop()
 
 def MainWindow():
-    
+
     root = tk.Tk()
 
     canv = tk.Canvas(root, width=1215, height=717, bg='white')
