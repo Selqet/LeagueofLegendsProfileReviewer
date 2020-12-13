@@ -13,7 +13,7 @@ def ReadAPI():
 def Search():
     summoner = srchsument.get()
     server = srchsrvr.get()
-    GetSummonerData(summoner, server)  
+    GetSummonerData(summoner, server) 
 
 def SwitchSummoner(champions, masteryscore):
     mainmasteryframe = tk.Frame(root)
@@ -37,11 +37,9 @@ def SwitchSummoner(champions, masteryscore):
         championlbl = tk.Label(mainmasteryframe, text = champions[i+10])
         championlbl.grid(row=i+1,column=3)
         masterylbl = tk.Label(mainmasteryframe, text = masteryscore[i+10])
-        masterylbl.grid(row=i+1,column=4)
+        masterylbl.grid(row=i+1,column=4) 
 
-    print(champions[0])
-        
-    
+            
 def WelcomeWindow():
     global welcomewin
     global wentry
@@ -64,10 +62,12 @@ def WelcomeWindow():
 
     welcomewin.mainloop()
 
+
 def MainWindow():
     global root
     global srchsument
     global srchsrvr
+    global background
 
     root = tk.Tk()
     root.title('LeagueofLegendsProfileReviewer')
@@ -87,8 +87,8 @@ def MainWindow():
     srchsrvr.place(x=38, y=80)
     srchbtn = tk.Button(searchframe, text = 'Search', command = Search)
     srchbtn.place(x=110, y=76)
-
     root.mainloop()
+
 
 
 def GetSummonerData(summoner, server):
