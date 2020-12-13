@@ -38,6 +38,8 @@ def SwitchSummoner(champions, masteryscore):
         championlbl.grid(row=i+1,column=3)
         masterylbl = tk.Label(mainmasteryframe, text = masteryscore[i+10])
         masterylbl.grid(row=i+1,column=4)
+
+    print(champions[0])
         
     
 def WelcomeWindow():
@@ -62,7 +64,6 @@ def WelcomeWindow():
 
     welcomewin.mainloop()
 
-
 def MainWindow():
     global root
     global srchsument
@@ -73,7 +74,7 @@ def MainWindow():
 
     background = tk.Canvas(root, width=1215, height=717, bg='white')
     background.grid()
-    img = ImageTk.PhotoImage(Image.open(r'.\Resources\DefaultBackground.jpg'))
+    img = ImageTk.PhotoImage(Image.open('.\\Resources\\DefaultBackground.jpg'))
     background.create_image(0, 0, anchor=tk.NW, image=img)
 
     searchframe = tk.Frame(root, width = 200, height = 120, bg = 'white')
@@ -96,8 +97,6 @@ def GetSummonerData(summoner, server):
     summ_id = summonerdata['id']
     masteryresp = requests.get(f'https://{Resources.servers[server]}/lol/champion-mastery/v4/champion-masteries/by-summoner/{summ_id}?api_key={api_key}')
     mastery = json.loads(masteryresp.content)
-    #for champion in mastery:
-        #print(champion['championId'])
     with open(r'.\Dragontail\10.24.1\data\en_US\championFull.json', 'r') as readf:
         championfulldata = json.load(readf)
 
