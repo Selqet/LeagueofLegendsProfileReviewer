@@ -3,5 +3,5 @@ import tkinter
 import lolapi
 
 root = tkinter.Tk()
-app = ui.Application(lolapi.LOL(""),root)
+app = ui.WelcomeWindow(root)
 app.mainloop()
