@@ -52,7 +52,7 @@ class Application(tk.Frame):
         leaguedata = self.api.get_summoner_league(region)
         self.CreateMasteryTable(champions)
         self.ChangeBackground(list(champions.keys())[0])
-        self.CreateLeagueInfo(leaguedata)
+        self.CreateRankInfo(leaguedata)
 
     def CreateMasteryTable(self, champions):
             self.mainmasteryframe = tk.Frame(self)
@@ -73,11 +73,12 @@ class Application(tk.Frame):
                 self.championlbl = tk.Label(self.mainmasteryframe, text = champions[key])
                 self.championlbl.grid(column = 2, row = i)
     
-    def CreateLeagueInfo(self, leaguedata):
+    #940 165
+    def CreateRankInfo(self, leaguedata):
         for item in leaguedata:
             if item['queueType'] == 'RANKED_SOLO_5x5':
                 self.rankimg = self.api.get_rank_image(item["tier"])
-                self.background.create_image(940, 165, image=self.rankimg)
+                self.background.create_image(150, 540, image=self.rankimg)
                 return
         
 
